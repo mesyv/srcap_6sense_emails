@@ -63,9 +63,14 @@ def scrap_email(url):
         comments_list.append(comment)
         users_count_list.append(get_users_count(comment))
         print(name)
-        # add this
         get_watchguard_info(company)
-        # ---
+        # ---font-size:9.0pt;color:#BCC1C5
+    email_titles = sense_table.find_all('span', {"style": "font-size:9.0pt;color:#BCC1C5"}) # Taking email name
+    for title in email_titles:
+        title = title.text.replace("\r","").replace("  ","").replace("\n"," ")
+        if "From segment:" in title:
+            email_title = title.split('-')[-1]
+            print(email_title)
 
 
         for item in company.find_all('span', {"style": "font-size:11.5pt;color:black"}): # Scrapping stage, fit, reach - they all have the same style 
@@ -147,6 +152,7 @@ keyword4_list = []
 keyword5_list = []
 comments_list = []
 users_count_list = []
+# email_title_list = []
 
 
 # --Main-code--
@@ -164,27 +170,27 @@ if __name__ == "__main__":
     for name in names_list:
         date_list.append(dt.datetime.today().strftime("%d-%b-%Y"))
 
-    dict = {
-        "Date added": date_list,
-        "Activity date": activities_date_list,
-        "Name": names_list,
-        "Website": websites_list,
-        "Location": locations_list,
-        "Buying stage": buying_stage_list,
-        "Profile fit": profile_fit_list,
-        "Account reach": account_reach_list,
-        "Keyword1": keyword1_list,
-        "Keyword2": keyword2_list,
-        "Keyword3": keyword3_list,
-        "Keyword4": keyword4_list,
-        "Keyword5": keyword5_list,
-        "Comment": comments_list,
-        "Users": users_count_list,
-    }
+    # dict = {
+    #     "Date added": date_list,
+    #     "Activity date": activities_date_list,
+    #     "Name": names_list,
+    #     "Website": websites_list,
+    #     "Location": locations_list,
+    #     "Buying stage": buying_stage_list,
+    #     "Profile fit": profile_fit_list,
+    #     "Account reach": account_reach_list,
+    #     "Keyword1": keyword1_list,
+    #     "Keyword2": keyword2_list,
+    #     "Keyword3": keyword3_list,
+    #     "Keyword4": keyword4_list,
+    #     "Keyword5": keyword5_list,
+    #     "Comment": comments_list,
+    #     "Users": users_count_list,
+    # }
 
-    df_data = pd.DataFrame(dict).sort_values(by="Users")
+    # df_data = pd.DataFrame(dict).sort_values(by="Users")
 # df_data
 
 # 2:
-# implement watchguard.com 
-# 1 column Watchgouard visitors; 1 coulmn list of watchguard visitors
+# active user with email
+# column with email title
