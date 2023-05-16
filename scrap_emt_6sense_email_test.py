@@ -160,7 +160,7 @@ if __name__ == "__main__":
     path = os.getcwd()
     # html_files = glob.glob(os.path.join(path, "*.html"))
     # html_files += glob.glob(os.path.join(path, "*.htm"))
-    html_files = [r"C:\eMazzanti\6sense\FW 6sense Hot Accounts USCAN - NE eMazz ARMA NE List 2    January 9zxc__.html"]
+    html_files = [r"C:\eMazzanti\6sense\6sense Hot Accounts USCAN - eMazz NJ Schools complete alert_0aksd0j9j81r7127hasd7hfksdsakdhas9aw9dhsakshdhaskmmmm.html"]
     print("Found", len(html_files), "HTML files")
 
     for url in html_files:
